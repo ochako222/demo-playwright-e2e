@@ -1,0 +1,36 @@
+{
+  "name": "travelplanet_assignment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "check": "prettier --check .",
+    "lint": "eslint . --ext .js,.ts --fix",
+    "ts-check": "tsc --noEmit",
+    "playwright:ui": "playwright test --ui",
+    "playwright:single": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@playwright/test": "^1.46",
+    "dotenv": "^16.4.5",
+    "envalid": "^8.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^v6.1.0",
+    "@types/adm-zip": "^0.5.5",
+    "@types/promise-poller": "^1.7.4",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "husky": "^8.0.1",
+    "typescript": "^5.5.4"
+  }
+}

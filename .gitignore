@@ -1,0 +1,11 @@
+node_modules
+videos
+
+report
+
+.DS_store
+
+configs/.env
+.env
+
+playwright/playwright-fixtures.ts
