@@ -16,4 +16,8 @@ export class NavbarComponent extends AppPage {
         await expect(this.getLogo).toBeVisible();
         await expect(this.getNavigationActionsContainer).toBeVisible();
     }
+
+    async clickOnLogIn() {
+        await this.getLoginButton.click();
+    }
 }

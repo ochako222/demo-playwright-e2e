@@ -8,7 +8,7 @@
         "prepare": "husky install",
         "check": "prettier --check .",
         "ts-check": "tsc --noEmit",
-        "playwright:ui": "PROJECT=invia-cz playwright test --ui",
+        "playwright:ui": "PROJECT=travelplanet-pl playwright test --ui",
         "playwright:pl": "CI=true PROJECT=travelplanet-pl playwright test",
         "playwright:hu": "CI=true PROJECT=invia-hu playwright test",
         "playwright:sk": "CI=true PROJECT=invia-sk playwright test",
