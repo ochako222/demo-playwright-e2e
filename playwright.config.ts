@@ -2,8 +2,8 @@ import { PlaywrightTestConfig } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
 
-const SUITE_TIMEOUT = 60 * 1000;
-const EXPECT_TIMEOUT = 35 * 1000;
+const SUITE_TIMEOUT = 30 * 1000;
+const EXPECT_TIMEOUT = 10 * 1000;
 
 // Upload variables from local .env file
 dotenv.config({ path: path.resolve(__dirname, '.env') });
@@ -24,7 +24,6 @@ const config: PlaywrightTestConfig = {
         timeout: EXPECT_TIMEOUT
     },
     timeout: SUITE_TIMEOUT,
-    retries: 1,
     use: {
         browserName: 'chromium',
         channel: 'chrome',

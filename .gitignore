@@ -7,5 +7,6 @@ report
 
 configs/.env
 .env
+.husky
 
 playwright/playwright-fixtures.ts
