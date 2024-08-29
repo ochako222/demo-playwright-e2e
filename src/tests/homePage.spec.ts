@@ -15,5 +15,7 @@ travelTest.describe('Home page test cases', () => {
         await app.homePage.expectLoaded();
         await app.homePage.navbar.expectLoaded();
         await app.homePage.footer.expectLoaded();
+
+        await app.homePage.footer.expectLoaded();
     });
 });

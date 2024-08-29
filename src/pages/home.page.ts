@@ -27,9 +27,6 @@ export class HomePage extends AppPage {
 
     public dialog = new DialogComponent(this.page);
 
-
-    
-
     async expectLoaded() {
         await expect(this.getSearchContainer).toBeVisible();
         await expect(this.getCommerceCarousel).toBeVisible();
