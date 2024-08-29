@@ -1,11 +1,12 @@
 import { Page } from 'playwright';
+import { ProjectsT } from 'types';
 
 export abstract class PageHolder {
     constructor(protected page: Page) {}
 }
 
 export abstract class Component extends PageHolder {
-    abstract expectLoaded(): Promise<void>;
+    abstract expectLoaded(project: ProjectsT): Promise<void>;
 }
 
 export abstract class AppPage extends Component {

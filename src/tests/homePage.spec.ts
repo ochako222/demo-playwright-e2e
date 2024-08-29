@@ -11,11 +11,13 @@ travelTest.describe('Home page test cases', () => {
         await app.homePage.goto(globalEnv.baseUrl);
     });
 
-    travelTest('home page should displays correct', { tag: ['@smoke'] }, async ({ app }) => {
-        await app.homePage.expectLoaded();
-        await app.homePage.navbar.expectLoaded();
-        await app.homePage.footer.expectLoaded();
-
-        await app.homePage.footer.expectLoaded();
-    });
+    travelTest(
+        'home page should displays correct',
+        { tag: ['@smoke'] },
+        async ({ app, globalEnv }) => {
+            await app.homePage.expectLoaded(globalEnv.PROJECT);
+            await app.homePage.navbar.expectLoaded();
+            await app.homePage.footer.expectLoaded(globalEnv.PROJECT);
+        }
+    );
 });

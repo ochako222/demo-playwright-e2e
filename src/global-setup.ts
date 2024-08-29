@@ -1,7 +1,7 @@
 import { cleanEnv, str } from 'envalid';
 import fs from 'fs';
 import path from 'path';
-import { ProcessEnv, GlobalVariablesI, EnvironmentSettingsI, GlobalEnvironmentT } from './types';
+import { ProcessEnv, EnvironmentSettingsI, GlobalEnvironmentT, GlobalVariablesI } from './types';
 
 // Validate and sanitize global environment variables
 const validateEnvironment = (globalVariables: ProcessEnv): GlobalVariablesI => {
@@ -9,9 +9,7 @@ const validateEnvironment = (globalVariables: ProcessEnv): GlobalVariablesI => {
         ENVIRONMENT: str({
             choices: ['qa', 'prod']
         }),
-        PROJECT: str({ choices: ['travelplanet-pl', 'invia-sk', 'invia-hu', 'invia-cz'] }),
-        USER_PASSWORD: str(),
-        USER_EMAIL: str()
+        PROJECT: str({ choices: ['travelplanet-pl', 'invia-sk', 'invia-hu', 'invia-cz'] })
     }) as GlobalVariablesI;
 };
 
