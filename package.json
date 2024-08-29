@@ -1,32 +1,32 @@
 {
-  "name": "travelplanet_assignment",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "format": "prettier --write .",
-    "lint": "eslint . --fix",
-    "prepare": "husky install",
-    "check": "prettier --check .",
-    "ts-check": "tsc --noEmit",
-    "playwright:ui": "playwright test --ui",
-    "playwright:single": "playwright test"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@playwright/test": "^1.46",
-    "dotenv": "^16.4.5",
-    "envalid": "^8.0.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.9.1",
-    "@types/node": "^22.5.1",
-    "eslint": "^8.57.0",
-    "husky": "^8.0.1",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.3.0"
-  }
+    "name": "travelplanet_assignment",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint . --fix",
+        "prepare": "husky install",
+        "check": "prettier --check .",
+        "ts-check": "tsc --noEmit",
+        "playwright:ui": "playwright test --ui",
+        "playwright:single": "playwright test"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@playwright/test": "^1.46",
+        "dotenv": "^16.4.5",
+        "envalid": "^8.0.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.9.1",
+        "@types/node": "^22.5.1",
+        "eslint": "^8.57.0",
+        "husky": "^8.0.1",
+        "prettier": "^3.3.3",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.3.0"
+    }
 }
