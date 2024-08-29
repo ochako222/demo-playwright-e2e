@@ -84,7 +84,7 @@ travelTest.describe('Base test cases', () => {
     );
 
     travelTest(
-        'search offer feature should work cornet',
+        'search offer feature should work correct',
         { tag: ['@smoke'] },
         async ({ app, globalEnv }) => {
             await app.homePage.expectLoaded(globalEnv.PROJECT);
@@ -98,10 +98,10 @@ travelTest.describe('Base test cases', () => {
             await app.homePage.searchForm.clickOnSearch();
 
             await app.searchPage.expectLoaded();
-            await expect(app.searchPage.searchForm.getDestinationInput).toHaveValue(
+            await expect(app.searchPage.searchForm.getDestinationField).toHaveValue(
                 flyDestination[globalEnv.PROJECT]
             );
-            await expect(app.searchPage.searchForm.getDepartureDateField).toHaveValue(
+            await expect(app.searchPage.searchForm.getDepartureField).toHaveValue(
                 new RegExp(flyDeparture[globalEnv.PROJECT])
             );
 
