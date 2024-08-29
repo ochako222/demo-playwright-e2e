@@ -11,7 +11,7 @@ export class FooterComponent extends AppPage {
 
     getFooterLogosContainer = this.page.locator('[data-cy="footer-logos"]');
 
-    async expectLoaded(project: ProjectsT) {
+    async expectLoaded(project?: ProjectsT) {
         await expect(this.getNewsLetters).toBeVisible();
 
         if (project == 'invia-hu') {

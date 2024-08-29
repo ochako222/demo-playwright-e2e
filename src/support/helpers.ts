@@ -7,17 +7,6 @@ const getDateRangeFromNow = (from: number, to: number) => {
     const finishDate = new Date(today);
     finishDate.setDate(today.getDate() + to);
 
-    // return {
-    //     startDate: {
-    //         day: startDate.getDate(),
-    //         month: startDate.toLocaleString('default', { month: 'long' })
-    //     },
-    //     finishDate: {
-    //         day: finishDate.getDate(),
-    //         month: finishDate.toLocaleString('default', { month: 'long' })
-    //     }
-    // };
-
     return {
         startDate,
         finishDate

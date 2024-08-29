@@ -1,3 +1,7 @@
 {
-    "baseUrl": "https://www.invia.cz"
+    "baseUrl": "https://www.invia.cz",
+    "baseUser": {
+        "email": "",
+        "password": ""
+    }
 }

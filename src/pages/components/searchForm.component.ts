@@ -3,45 +3,70 @@ import { AppPage } from 'pages/abstractClasses';
 import { helpers } from 'support/helpers';
 
 export class SearchFormComponent extends AppPage {
-    getDestinationInput = this.page.locator('#main-search [name="destination_picker"]');
+    getDestinationField = this.page.locator('#main-search [name="destination_picker"]');
 
-    getDepartureDateInput = this.page.locator('#main-search [name="date_picker"]');
+    getDestinationInput = this.page.locator(
+        '[data-cy="sf-destination-picker-popup-search-textbox"]'
+    );
 
-    getTransportationInput = this.page.locator('#main-search [name="transportation_picker"]');
+    getDestinationByName = (destination: string) =>
+        this.page
+            .locator('[data-cy="sf-destination-picker-popup-tags"] ul li')
+            .getByText(destination);
+
+    getConfirmDestinationButton = this.page.locator(
+        '[data-cy="sf-destination-picker-popup-save-button"]'
+    );
+
+    getCalendarElement = this.page.locator(
+        '[class="i-calendar__months i-calendar__months--horizontal"]'
+    );
+
+    getConfirmDateButton = this.page.locator('[data-cy="sf-datepicker-popup-save-button"]');
+
+    getDestinationsList = this.page.locator('.b-destinations__virtualized-list');
+
+    getDepartureDateField = this.page.locator('#main-search [name="date_picker"]');
+
+    getDepartureField = this.page.locator('#main-search [name="transportation_picker"]');
+
+    getDepartureDropdown = this.page.locator(
+        '[data-cy="sf-transportation-picker-popup-content"]>div'
+    );
+
+    getDeparturePlaceByName = (name: string) =>
+        this.page.locator('[role="presentation"] ul li').getByText(name, { exact: true });
+
+    getConfirmDepartureButton = this.page.locator(
+        '[data-cy="sf-transportation-picker-popup-save-button"]'
+    );
+
+    getSearchOfferButton = this.page.locator('[data-cy="sf-submit-button"]');
 
     async expectLoaded() {
-        await expect(this.getDestinationInput).toBeVisible();
-        await expect(this.getDepartureDateInput).toBeVisible();
-        await expect(this.getTransportationInput).toBeVisible();
+        await expect(this.getDestinationField).toBeVisible();
+        await expect(this.getDepartureDateField).toBeVisible();
+        await expect(this.getDepartureField).toBeVisible();
     }
 
     async selectDestination(destination: string) {
-        await this.getDestinationInput.click();
+        await this.getDestinationField.click();
+        await this.getDestinationInput.fill(destination);
 
-        await this.page
-            .locator('[data-cy="sf-destination-picker-popup-search-textbox"]')
-            .fill(destination);
-
-        await expect(this.page.locator('.b-destinations__virtualized-list')).toBeVisible();
+        await expect(this.getDestinationsList).toBeVisible();
 
         await this.page.locator(`[aria-label="${destination}"]`).click();
 
-        await expect(
-            this.page
-                .locator('[data-cy="sf-destination-picker-popup-tags"] ul li')
-                .getByText(destination)
-        ).toBeVisible();
+        await expect(this.getDestinationByName(destination)).toBeVisible();
 
-        await this.page.locator('[data-cy="sf-destination-picker-popup-save-button"]').click();
+        await this.getConfirmDestinationButton.click();
     }
 
     async selectDate(startDate: Date, finishDate: Date) {
-        const current = helpers.getCurrentMonth();
+        const currentMonth = helpers.getCurrentMonth();
 
-        await this.getDepartureDateInput.click();
-        await expect(
-            this.page.locator('[class="i-calendar__months i-calendar__months--horizontal"]')
-        ).toBeVisible();
+        await this.getDepartureDateField.click();
+        await expect(this.getCalendarElement).toBeVisible();
 
         const currentMonthContainer = await this.page.locator('.i-calendar__month--left');
         const nextMonthContainer = await this.page.locator('.i-calendar__month--right');
@@ -50,10 +75,10 @@ export class SearchFormComponent extends AppPage {
         const finishMonth = finishDate.toLocaleString('default', { month: 'long' });
 
         const startDateContainer =
-            current == startMonth ? currentMonthContainer : nextMonthContainer;
+            currentMonth == startMonth ? currentMonthContainer : nextMonthContainer;
 
         const finishDateContainer =
-            current == finishMonth ? currentMonthContainer : nextMonthContainer;
+            currentMonth == finishMonth ? currentMonthContainer : nextMonthContainer;
 
         await startDateContainer
             .locator('button[id*=datepicker-calendar]')
@@ -65,26 +90,35 @@ export class SearchFormComponent extends AppPage {
             .getByText(`${finishDate.getDate()}`, { exact: true })
             .click();
 
-        await this.page.locator('[data-cy="sf-datepicker-popup-save-button"]').click();
+        await this.getConfirmDateButton.click();
     }
 
-    async selectTransport(transport: 'Wrocław') {
-        await this.getTransportationInput.click();
+    async selectDeparturePlace(place: string) {
+        await this.getDepartureField.click();
 
-        await expect(
-            this.page.locator('[data-cy="sf-transportation-picker-popup-content"]>div')
-        ).toBeVisible();
+        await expect(this.getDepartureDropdown).toBeVisible();
 
-        await this.page
-            .locator('[role="presentation"] ul li')
-            .getByText(transport, { exact: true })
-            .click({ force: true });
+        const departure = this.getDeparturePlaceByName(place);
 
-        await this.page.locator('[data-cy="sf-transportation-picker-popup-save-button"]').click();
+        const isSelected = await departure
+            .locator('..')
+            .locator('..')
+            .locator('..')
+            .locator('[type="checkbox"]')
+            .isChecked();
+
+        if (isSelected) {
+            console.log(`${place} already selected`);
+        } else {
+            console.log(`select ${place} option`);
+            await departure.click({ force: true });
+        }
+
+        await this.getConfirmDepartureButton.click();
     }
 
     async clickOnSearch() {
-        await this.page.locator('[data-cy="sf-submit-button"]').click();
+        await this.getSearchOfferButton.click();
         await this.page.waitForLoadState('networkidle');
     }
 }

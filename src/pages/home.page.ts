@@ -32,15 +32,16 @@ export class HomePage extends AppPage {
 
     public searchForm = new SearchFormComponent(this.page);
 
-    async expectLoaded(project: ProjectsT) {
+    async expectLoaded(project?: ProjectsT) {
         await expect(this.getCommerceCarousel).toBeVisible();
         await expect(this.getTopOffers).toBeVisible();
         await expect(this.getBestDestinationsContainer).toBeVisible();
         await expect(this.getAdvertising).toBeVisible();
         await expect(this.getOffers).toBeVisible();
+        await expect(this.getPlanes).toBeVisible();
+
         if (project == 'travelplanet-pl') {
             await expect(this.getHelpline).toBeVisible();
         }
-        await expect(this.getPlanes).toBeVisible();
     }
 }

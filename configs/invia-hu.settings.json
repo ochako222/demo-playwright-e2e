@@ -1,3 +1,7 @@
 {
-    "baseUrl": "https://www.invia.hu"
+    "baseUrl": "https://www.invia.hu",
+    "baseUser": {
+        "email": "",
+        "password": ""
+    }
 }

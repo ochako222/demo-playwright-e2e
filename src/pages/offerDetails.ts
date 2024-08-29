@@ -13,9 +13,9 @@ export class OfferDetailsPage extends AppPage {
         .locator('.b-hotel-card [data-controller="gallery thumb-slider"]')
         .first();
 
-    getOfferDescription = this.page.locator('section#opis');
+    getOfferDescription = this.page.locator('section[data-controller="gtm"]');
 
-    getOfferReview = this.page.locator('section#recenzje-hotelu');
+    getOfferReview = this.page.locator('section [data-controller*="hotel-review"]');
 
     public navbar = new NavbarComponent(this.page);
 

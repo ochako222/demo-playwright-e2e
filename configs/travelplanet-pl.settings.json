@@ -1,3 +1,7 @@
 {
-    "baseUrl": "https://www.travelplanet.pl"
+    "baseUrl": "https://www.travelplanet.pl",
+    "baseUser": {
+        "email": "",
+        "password": ""
+    }
 }
