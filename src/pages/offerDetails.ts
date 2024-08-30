@@ -24,10 +24,10 @@ export class OfferDetailsPage extends AppPage {
     public loginModal = new LoginModal(this.page);
 
     async expectLoaded() {
-        await expect(this.getHeaderContainer).toBeVisible();
-        await expect(this.getOfferDetailsContainer).toBeVisible();
-        await expect(this.getGallerySlider).toBeVisible();
-        await expect(this.getOfferDescription).toBeVisible();
-        await expect(this.getOfferReview).toBeVisible();
+        await expect.soft(this.getHeaderContainer).toBeVisible();
+        await expect.soft(this.getOfferDetailsContainer).toBeVisible();
+        await expect.soft(this.getGallerySlider).toBeVisible();
+        await expect.soft(this.getOfferDescription).toBeVisible();
+        await expect.soft(this.getOfferReview).toBeVisible();
     }
 }

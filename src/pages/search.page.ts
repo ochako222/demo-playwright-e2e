@@ -18,6 +18,8 @@ export class SearchPage extends AppPage {
 
     getPaginationContainer = this.page.locator('#search-results-pagination');
 
+    getNextPageButton = this.page.locator('nav.pagination button.pagination__link--next');
+
     public navbar = new NavbarComponent(this.page);
 
     public footer = new FooterComponent(this.page);
@@ -27,20 +29,23 @@ export class SearchPage extends AppPage {
     public searchForm = new SearchFormComponent(this.page);
 
     async expectLoaded(options?: { isDirectSearch: boolean }) {
-        if (options?.isDirectSearch) await expect(this.getAdvertisingBanner).toBeVisible();
-        await expect(this.getSearchActionsContainer).toBeVisible();
-        await expect(this.getSearchResultsContainer).toBeVisible();
-        await expect(this.getSearchFilterContainer).toBeVisible();
-        await expect(this.getMapElement).toBeVisible();
-        await expect(this.getPaginationContainer).toBeVisible();
+        if (options?.isDirectSearch) await expect.soft(this.getAdvertisingBanner).toBeVisible();
+        await expect.soft(this.getSearchActionsContainer).toBeVisible();
+        await expect.soft(this.getSearchResultsContainer).toBeVisible();
+        await expect.soft(this.getSearchFilterContainer).toBeVisible();
+        await expect.soft(this.getMapElement).toBeVisible();
+        await expect.soft(this.getPaginationContainer).toBeVisible();
     }
 
     async clickOnNextPage() {
-        await this.page.locator('nav.pagination button.pagination__link--next');
+        await this.getNextPageButton.click();
         await this.page.waitForLoadState('networkidle');
     }
 
     async clickOnOfferByNumber(number: number) {
-        await this.page.locator('article').nth(number).click();
+        await this.page
+            .locator('article [data-serp-aapc-target="buttonLabel"]')
+            .nth(number)
+            .click();
     }
 }

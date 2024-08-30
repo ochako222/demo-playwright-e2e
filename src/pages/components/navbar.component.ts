@@ -11,10 +11,10 @@ export class NavbarComponent extends AppPage {
     getNavigationActionsContainer = this.page.locator('[data-cy="menu-main"]');
 
     async expectLoaded() {
-        await expect(this.getHeaderTopMenuContainer).toBeVisible();
-        await expect(this.getLoginButton).toBeVisible();
-        await expect(this.getLogo).toBeVisible();
-        await expect(this.getNavigationActionsContainer).toBeVisible();
+        await expect.soft(this.getHeaderTopMenuContainer).toBeVisible();
+        await expect.soft(this.getLoginButton).toBeVisible();
+        await expect.soft(this.getLogo).toBeVisible();
+        await expect.soft(this.getNavigationActionsContainer).toBeVisible();
     }
 
     async clickOnLogIn() {

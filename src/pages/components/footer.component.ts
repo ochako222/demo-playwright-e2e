@@ -12,15 +12,14 @@ export class FooterComponent extends AppPage {
     getFooterLogosContainer = this.page.locator('[data-cy="footer-logos"]');
 
     async expectLoaded(project?: ProjectsT) {
-        await expect(this.getNewsLetters).toBeVisible();
-
         if (project == 'invia-hu') {
-            expect(await this.getFooterLinks()).toHaveLength(28);
+            expect.soft(await this.getFooterLinks()).toHaveLength(28);
         } else {
-            expect(await this.getFooterLinks()).toHaveLength(22);
+            expect.soft(await this.getFooterLinks()).toHaveLength(22);
         }
 
-        await expect(this.getFooterContact).toBeVisible();
-        await expect(this.getFooterLogosContainer).toBeVisible();
+        await expect.soft(this.getNewsLetters).toBeVisible();
+        await expect.soft(this.getFooterContact).toBeVisible();
+        await expect.soft(this.getFooterLogosContainer).toBeVisible();
     }
 }

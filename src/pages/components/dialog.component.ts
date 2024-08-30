@@ -9,7 +9,7 @@ export class DialogComponent extends AppPage {
     );
 
     async expectLoaded() {
-        await expect(this.getDialogContainer).toBeVisible();
+        await expect.soft(this.getDialogContainer).toBeVisible();
     }
 
     async clickOnConfirmDialog() {

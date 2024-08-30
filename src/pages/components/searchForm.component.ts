@@ -44,9 +44,9 @@ export class SearchFormComponent extends AppPage {
     getSearchOfferButton = this.page.locator('[data-cy="sf-submit-button"]');
 
     async expectLoaded() {
-        await expect(this.getDestinationField).toBeVisible();
-        await expect(this.getDepartureDateField).toBeVisible();
-        await expect(this.getDepartureField).toBeVisible();
+        await expect.soft(this.getDestinationField).toBeVisible();
+        await expect.soft(this.getDepartureDateField).toBeVisible();
+        await expect.soft(this.getDepartureField).toBeVisible();
     }
 
     async selectDestination(destination: string) {
