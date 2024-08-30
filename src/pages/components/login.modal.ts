@@ -19,9 +19,9 @@ export class LoginModal extends AppPage {
     getLoader = this.page.locator('.loader');
 
     async expectLoaded() {
-        await expect(this.getModalTitle).toBeVisible();
-        await expect(this.getEmailInput).toBeVisible();
-        await expect(this.getPasswordInput).toBeVisible();
+        await expect.soft(this.getModalTitle).toBeVisible();
+        await expect.soft(this.getEmailInput).toBeVisible();
+        await expect.soft(this.getPasswordInput).toBeVisible();
     }
 
     async fillInLoginForm(name: string, password: string, options?: { modifyInputs: boolean }) {
