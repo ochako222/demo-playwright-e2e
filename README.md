@@ -1,8 +1,8 @@
 ## Architecture:
 
--   `tests` - folder with all tests, spited by **publishing**, **syndicate**, and **vapor**
+-   `src/tests` - folder with all tests
 
--   `configs` - folder with settings for test entities, for example titles for created folders during the test, or where to store specific course on studio, and scorm cloud user credentials, and etc... In case to change any title test use during the test, this configs should be modified
+-   `configs` - folder with settings for test entities.
 
 -   `spec/fixtures` - playwright fixtures folder. All test entities store here
 
@@ -31,6 +31,8 @@ PROJECT=travelplanet-pl
 > Possible values of PROJECT: travelplanet-pl, invia-hu, invia-sk, invia-cz
 
 Also it's possible to define or override variable with playwright CLI, for more info take a look on predefined scripts in package.json
+
+> If CI=true dined tests will run in headless mode
 
 All variables are required, and if any are missing, you will encounter errors during launch.
 
