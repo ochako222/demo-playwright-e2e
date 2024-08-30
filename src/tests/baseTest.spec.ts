@@ -32,9 +32,9 @@ export const LOCAL_DICTIONARY: Record<string, Record<ProjectsT, string>> = {
 
 travelTest.describe('Base test cases', () => {
     travelTest.beforeEach('Navigate to home page', async ({ page, app, globalEnv }) => {
-        // Handle the cookie acceptance dialog if it appears
         await app.homePage.goto(globalEnv.baseUrl);
 
+        // Handle the cookie acceptance dialog if it appears
         await page.addLocatorHandler(app.homePage.dialog.getDialogContainer, async () => {
             console.log('cookie popup found');
             await app.homePage.dialog.clickOnConfirmDialog();
