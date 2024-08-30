@@ -42,6 +42,10 @@ Now we can launch first test:
 
 ```bash
 npm ci
+
+npx playwright install
+
+npx playwright install chrome
 ```
 
 _It's highly recommended to use npm ci instead of npm install_
